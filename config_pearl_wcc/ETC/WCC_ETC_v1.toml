@@ -1,0 +1,87 @@
+# This is a TOML baseline observatory configuration in SI units
+
+title = "WCC Baseline Configuration"
+
+[WCC]
+FOV_w  = '13.75arcminute'
+FOV_h  = '5.16arcminute'
+
+[sensor]
+CMOS_QE = "data/sensors/ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_QE_curve.fits" #ZWO sensor characterization of Sony IMX455, pending UA ITL validation
+CMOS_dark = "data/sensors/ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_Dark_Current_vs_Sensor_Temperature.csv"
+CMOS_gain = "data/sensors/ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_Gain_vs_Gain_Setting.csv"
+CMOS_read = "data/sensors/ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_Read_Noise_vs_Gain_Setting.csv"
+CMOS_well = "data/sensors/ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_Well_Depth_vs_Gain_Setting.csv"
+T_nominal = '20Celsius'
+T_nominal_range = '1Kelvin'
+T_stability = '0.1Kelvin/hour'
+pixel_size = '3.76micron'
+gain_setting= 100
+sensor_area = '36mmx24mm'
+
+[zodi]
+magnitude=23 # Vega Mag
+spectral_profile = "zodiacal_model_001.fits"
+
+# Default filter added.
+
+[filters]
+filter = "data/filters/sdss_filters/SLOAN_SDSS.rprime_filter.dat" # Specify this?
+
+#	Everything below will move upstream
+
+[telescope]
+fnum = 15.0
+jitter_rms = '10e-3arcsecond'
+OpticalDesign = 'TMA_Mark_12F' #Daewook Kim's Space Coronagraph Optical Team Design
+
+# primary mirror properties
+D_aperture = '6.42m' # astronomically useful polished telescope clear aperture 
+D_M1_clear_ID = '1.38m' # astronomical polished M1 inner diameter
+M1_rms_surface = '21e-9m' # spec from STP M1 Specification (stp202401_0003)
+M1_rms_surface_goal = '9.4e-9m' # stretch goal from STP M1 Specification (stp202401_0003)
+M1_refl = "coatings/NIST_1st_surface_Al.csv" # NIST reference curve for aged bare aluminum
+Field_Bias = '0.17degree'
+M1_T_nominal = '20Celsius'
+M1_T_nominal_range = '1Kelvin'
+M1_T_stability = '0.01kelvin/hour'
+M1_coating_stddev = 0.02
+
+# secondary properties
+D_secondary = '1.38m' # m
+support_width = '0.15m' # secondary support baffle width
+n_supports = 3 # number of spider Legs
+D_M2_clear_ID = '0.760m' # optical clear aperture
+M2_refl ="coatings/NIST_1st_surface_Al.csv" 
+M2_T_nominal = '-35Celsius' 
+M2_T_nominal_range = '20Celsius' #+- this value
+M2_T_stability = '0.05Kelvin/hour'
+M2_rms_surface = '5e-9m'
+M2_B = 10 # cycles/m
+M2_C = 2.65 #power law exponent
+M2_coating_stddev = 0.005
+
+
+# tertiary mirror properties
+D_M3_clear_ID_w = '0.560m'
+D_M3_clear_ID_h = '0.360m'
+M3_refl = "coatings/NIST_1st_surface_Al.csv"
+M3_T_nominal = '10Celsius' #set point assumed by past models
+M3_T_nominal_range = '10Kelvin' #WAG 
+M3_T_stability = '0.05Kelvin/hour' #WAG
+M3_rms_surface = '5e-9m'
+M3_B = 10 # cycles/m
+M3_C = 2.65 #power law exponent
+M3_coating_stddev = 0.005
+
+
+# quaternary mirror properties
+D_M4_clear_ID = '0.130m'
+M4_refl = "coatings/NIST_1st_surface_Al.csv"
+M4_T_nominal = '1Celsius'
+M4_T_nominal_range = '20Kelvin'
+M4_T_stability = '0.05Kelvin/hour'
+M4_B = 10 # cycles/m
+M4_C = 2.65 #power law exponent
+M4_rms_surface = '5e-9m'
+M4_coating_stddev = 0.005
