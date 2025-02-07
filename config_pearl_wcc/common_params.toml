@@ -1,0 +1,117 @@
+# REPLACE WITH PATHS TO SUPPORT DATA OR 
+# IMPORT FROM HIGHER LEVEL CONFIG REPO
+opds_path = ""
+coat_path = ""
+cam_path = ""
+
+[spectrum] #---------------------------------------------------------------------
+# PLACEHOLDER: This will be replaced with a filter specification
+wvl_reference = '625e-9m' # central wavelength of baselined sloan R-band filter  
+bandwidth = 0.24 # bandwidth of baselined sloan R-band filter; fraction of wvl_reference
+
+[sources] #---------------------------------------------------------------------
+
+[sources.guide_star_1]
+magnitude = 17 # R-band Rmag
+spectral_profile = "pickles_uk_23.fits" # host star spectral template (default is Pickles G0)
+
+[sources.guide_star_2]
+magnitude = 17 # R-band Rmag
+spectral_profile = "pickles_uk_23.fits" # host star spectral template (default is Pickles G0)
+
+[sources.guide_star_3]
+magnitude = 17 # R-band Rmag
+spectral_profile = "pickles_uk_23.fits" # host star spectral template (default is Pickles G0)
+
+[sources.guide_star_4]
+magnitude = 17 # R-band Rmag
+spectral_profile = "pickles_uk_23.fits" # host star spectral template (default is Pickles G0)
+
+[sources.guide_star_5]
+magnitude = 17 # R-band Rmag
+spectral_profile = "pickles_uk_23.fits" # host star spectral template (default is Pickles G0)
+
+[pupil] #---------------------------------------------------------------------
+aper_clear_OD = '6.42m'                   
+aper_clear_ID = '1.38m'         
+num_supports = 3        
+support_width = '0.15m'               
+
+[optics] #---------------------------------------------------------------------           
+
+[optics.m1]
+aper_clear_OD = '6.42m' # astronomically polished clear aperture 
+aper_clear_ID = '1.38m' # astronomical polished inner diameter
+beam_size = '6.42m' # derived from Zemax
+beam_walk = 0 # fraction of beam_size; derived from Zemax
+opd_map = "M1_map.fits" # created using psd_utils from surf_rms, psd_b, and psd_c     
+opd_map_goal = "M1_goal_map.fits" # created using psd_utils from surf_rms_goal, psd_b, and psd_c     
+surf_rms = '21e-9m' # L4-FOA-M1-1003 - spec from STP M1 Specification (stp202401_0003)
+surf_rms_goal = '9.4e-9m' # stretch goal from STP M1 Specification (stp202401_0003)
+psd_b = 0.1 # cycles/m
+psd_c = 2.8 # power law exponent
+temp_nominal = '20Celsius'  # Trade study XYZ and ConOps
+temp_nominal_delta = '1Kelvin' # L3-5013 - +/- value about nominal
+temp_stability = '0.01Kelvin/hour' # L3-5015 - FIXME - issue with spec?
+coating_refl = "NIST_1st_surface_Al.csv"  # NIST reference curve for aged bare aluminum reflectivity
+coating_refl_rms = 0.02
+
+[optics.m2]
+aper_clear_OD = '1.38m' # astronomically polished clear aperture 
+aper_clear_ID = '0.0m' # astronomical polished inner diameter
+beam_size = '0.57841269876009842m' # derived from Zemax
+beam_walk = 0.0001648296196517078 # fraction of beam_size; derived from Zemax
+opd_map = "M2_map.fits" # created using psd_utils from surf_rms, psd_b, and psd_c     
+surf_rms = '8e-9m' # L4-FOA-M2-1003
+psd_b = 0.1 # cycles/m; L4-FOA-M2-1004
+psd_c = 2.8 # power law exponent; L4-FOA-M2-1004
+temp_nominal = '-35Celsius' # CBE
+temp_nominal_delta = '3Kelvin' # L4-FOA-M2-0007 - remains TBR - +/- value about nominal
+temp_stability = '1Kelvin/hour' # LL4-FOA-M2-0003- no value set in requirement - value is a WAG
+coating_refl = "NIST_1st_surface_Al.csv" # NIST reference curve for aged bare aluminum reflectivity
+coating_refl_rms = 0.005
+
+[optics.m3]
+aper_clear_w = '0.568m' # astronomically polished width
+aper_clear_h = '0.36m' # astronomical polished height
+beam_size = '0.08319464623257851m' # derived from Zemax
+beam_walk = 0.0069413534814011905 # fraction of beam_size; derived from Zemax
+opd_map = "M3_map.fits" # created using psd_utils from surf_rms, psd_b, and psd_c     
+surf_rms = '8e-9m' # - from esc design guide
+psd_b = 10 # [cycles/m] - from esc design guide
+psd_c = 2.65 # power law exponent -from esc design guide
+temp_nominal = '10Celsius' # CBE
+temp_nominal_delta = '10Kelvin' # WAG 
+temp_stability = '0.05Kelvin/hour' # WAG
+coating_refl = "NIST_1st_surface_Al.csv" # NIST reference curve for aged bare aluminum reflectivity
+coating_refl_rms = 0.005
+
+[optics.m4]
+aper_clear_OD = '0.1m' # astronomically polished clear aperture
+aper_clear_ID = '0.0m' # astronomical polished inner diameter
+beam_size = '0.08561819m' # derived from Zemax
+beam_walk = 0 # fraction of beam_size; derived from Zemax
+opd_map = "M4_map.fits" # created using psd_utils from surf_rms, psd_b, and psd_c     
+surf_rms = '5e-9m' # - from esc design guide
+psd_b = 10 # [cycles/m] - from esc design guide
+psd_c = 2.65 # power law exponent -from esc design guide
+temp_nominal = '1Celsius' # CBE
+temp_nominal_delta = '20Kelvin' # CBE 
+temp_stability = '0.05Kelvin/hour' # WAG
+coating_refl = "NIST_1st_surface_Al.csv" # NIST reference curve for aged bare aluminum reflectivity
+coating_refl_rms = 0.005
+
+[sensor] #---------------------------------------------------------------------
+
+exposure_time = 1                   # seconds
+black_level = 100
+gain = 100
+pixel_size = '3.76e-6m'
+qe = "ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_QE_curve.fits" 
+dark_current = "ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_Dark_Current_vs_Sensor_Temperature.csv"
+gain_curve = "ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_Gain_vs_Gain_Setting.csv"
+read_noise = "ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_Read_Noise_vs_Gain_Setting.csv"
+well_depth = "ZWO_ASI6200MM/ZWO_ASI6200MM_Pro_Well_Depth_vs_Gain_Setting.csv"
+temp_nominal = '20Celsius' # CBE
+temp_nominal_range = '1Kelvin' # CBE
+temp_stability = '0.1Kelvin/hour' # WAG
