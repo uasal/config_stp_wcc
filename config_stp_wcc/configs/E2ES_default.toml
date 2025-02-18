@@ -1,4 +1,4 @@
-title = "Pearl WCC Default Instrument Configuration"
+title = "STP WCC Default Instrument Configuration"
 
 [simulation] #---------------------------------------------------------------------
 beam_sampling = 512 # pixels; should be greater or equal to 2x fov to ensure Nyquist
