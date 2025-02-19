@@ -10,10 +10,8 @@ A description of how configurations are used in UASAL software, users can find a
 
 config_stp_wcc is dependent on [utils_config](https://github.com/uasal/utils_config) but will automatically be installed via 
 ```sh 
-pip install git+ssh://git@github.com/uasal/utils_config.git
+pip install "git+https://github.com/uasal/utils_config.git@develop"
 ```
-
-which requires access to the repository in addition to git ssh keys configured on the target machine.
 
 ## Pip Installation
 
