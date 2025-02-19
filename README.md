@@ -6,12 +6,14 @@ Details on the change control process are found in the [coronograph design docum
 
 The parameters for each subsystem are found in the `configs` directory, and supporting data is found in the `support_data` directory.
 A description of how configurations are used in UASAL software, users can find an example notebook in the `docs` directory of the  [config_project_template](https://github.com/uasal/config_project_template) repository. 
-## Dependencies
+## Dependencies and Requirements
 
 config_stp_wcc is dependent on [utils_config](https://github.com/uasal/utils_config) but will automatically be installed via 
 ```sh 
 pip install "git+https://github.com/uasal/utils_config.git@develop"
 ```
+
+ssh keys are necessary for the pip-based install. Verify you have ssh keys installed in GitHub, or check out this [ssh key tutorial](https://github.com/uasal/lab_documents/blob/main/ssh_key_tutorial.md)
 
 ## Pip Installation
 
