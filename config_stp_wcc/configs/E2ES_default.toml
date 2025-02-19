@@ -6,8 +6,7 @@ fov = 128 # pixels; should be no greater than 1/2 of beam_sampling to ensure Nyq
 wvl_sampling = 24 # baseline sloan-R filter is 24% bandwidth; my general rule of thumb is 1 wvl per % of bandwidth      
 
 [pr] #---------------------------------------------------------------------
-
-defocus_vals = [0, 0.5, 1, 0.5, 1] # waves of defocus for each PSF
+defocus_vals = [0.0, 0.5, 1.0, 0.5, 1.0] # waves of defocus for each PSF  
 
 [pr.iter1]
 type = 'joint' # joint or individual optimization of PSFs
