@@ -13,22 +13,32 @@ bandwidth = 0.24 # bandwidth of baselined sloan R-band filter; fraction of wvl_r
 
 [sources.guide_star_1]
 magnitude = 17 # R-band Rmag
+position_x = 0 # arcmin
+position_y = 0 # arcmin
 spectral_profile = "pickles_uk_23.fits" # host star spectral template (default is Pickles G0)
 
 [sources.guide_star_2]
 magnitude = 17 # R-band Rmag
+position_x = 5 # arcmin
+position_y = 2 # arcmin
 spectral_profile = "pickles_uk_23.fits" # host star spectral template (default is Pickles G0)
 
 [sources.guide_star_3]
 magnitude = 17 # R-band Rmag
+position_x = 5 # arcmin
+position_y = -2 # arcmin
 spectral_profile = "pickles_uk_23.fits" # host star spectral template (default is Pickles G0)
 
 [sources.guide_star_4]
 magnitude = 17 # R-band Rmag
+position_x = -5 # arcmin
+position_y = 2 # arcmin
 spectral_profile = "pickles_uk_23.fits" # host star spectral template (default is Pickles G0)
 
 [sources.guide_star_5]
 magnitude = 17 # R-band Rmag
+position_x = -5 # arcmin
+position_y = -2 # arcmin
 spectral_profile = "pickles_uk_23.fits" # host star spectral template (default is Pickles G0)
 
 [sensor] #---------------------------------------------------------------------
