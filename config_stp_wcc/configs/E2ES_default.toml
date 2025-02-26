@@ -9,16 +9,16 @@ use_raytrace = "True"
 [optics] #---------------------------------------------------------------------
 
 [optics.m1]
-beam_size = '6.42m' # derived from Zemax
+beam_size = '6.42m' # derived from STP_TMA_Mark_12F+M1_Bending.zos by multiplying the distance between the chief and marginal rays by 2
 
 [optics.m2]
-beam_size = '0.5784126987600984m' # derived from Zemax
+beam_size = '0.5784126987600984m' # derived from STP_TMA_Mark_12F+M1_Bending.zos by multiplying the distance between the chief and marginal rays by 2
 
 [optics.m3]
-beam_size = '0.08319464623257851m' # derived from Zemax
+beam_size = '0.08319464623257851m' # derived from STP_TMA_Mark_12F+M1_Bending.zos by multiplying the distance between the chief and marginal rays by 2
 
 [optics.m4]
-beam_size = '0.08561819m' # derived from Zemax
+beam_size = '0.08561819m' # derived from STP_TMA_Mark_12F+M1_Bending.zos by multiplying the distance between the chief and marginal rays by 2
 
 [pr] #---------------------------------------------------------------------
 defocus_vals = [0.0, 0.5, 1.0, 0.5, 1.0] # waves of defocus for each PSF  
