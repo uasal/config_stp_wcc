@@ -7,4 +7,4 @@ FOV_h  = '5.16arcminute'
 # Default filter added.
 
 [filters]
-filter = "support_data/filters/sdss_r_005_syn.fits"
+filter = "/filters/sdss_r_005_syn.fits"
