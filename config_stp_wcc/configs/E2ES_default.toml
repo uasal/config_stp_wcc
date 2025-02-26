@@ -4,6 +4,21 @@ title = "STP WCC Default Instrument Configuration"
 beam_sampling = 512 # pixels; should be greater or equal to 2x fov to ensure Nyquist
 fov = 128 # pixels; should be no greater than 1/2 of beam_sampling to ensure Nyquist
 wvl_sampling = 24 # baseline sloan-R filter is 24% bandwidth; my general rule of thumb is 1 wvl per % of bandwidth      
+use_raytrace = "True"
+
+[optics] #---------------------------------------------------------------------
+
+[optics.m1]
+beam_size = '6.42m' # derived from STP_TMA_Mark_12F+M1_Bending.zos by multiplying the distance between the chief and marginal rays by 2
+
+[optics.m2]
+beam_size = '0.5784126987600984m' # derived from STP_TMA_Mark_12F+M1_Bending.zos by multiplying the distance between the chief and marginal rays by 2
+
+[optics.m3]
+beam_size = '0.08319464623257851m' # derived from STP_TMA_Mark_12F+M1_Bending.zos by multiplying the distance between the chief and marginal rays by 2
+
+[optics.m4]
+beam_size = '0.08561819m' # derived from STP_TMA_Mark_12F+M1_Bending.zos by multiplying the distance between the chief and marginal rays by 2
 
 [pr] #---------------------------------------------------------------------
 defocus_vals = [0.0, 0.5, 1.0, 0.5, 1.0] # waves of defocus for each PSF  
