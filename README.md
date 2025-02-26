@@ -50,7 +50,7 @@ load_config_values() has a default argument of 'raw' but alternatively accepts 3
 For importing data and keeping code consistent across installs, config_stp_wcc will return the path to support_data with `get_data_path()`
 ```python
 import config_stp_wcc
-data_path = config_stp.get_data_path()
+data_path = config_stp_wcc.get_data_path()
 print(data_path)
 ``` 
 

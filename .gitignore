@@ -44,7 +44,7 @@ coverage.xml
 *.h5
 
 # Ignore Python package files that are generated
-config_stp.egg-info/
+config_stp_wcc.egg-info/
 
 # Ignore compiled wheels and distribution archives
 *.tar.gz
