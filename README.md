@@ -54,6 +54,17 @@ data_path = config_stp_wcc.get_data_path()
 print(data_path)
 ``` 
 
+## Astropy Unit Validation
+
+All .toml configs should use a valid astropy unit if a unit is included. Even though the package gives the ability to import a dictionary as unitless, any time a new value is added to the configs, it should have an associated astropy unit. A GitHub CI will automatically run a test to validate the configs, or alternatively tests can be run on your local copy using `pytest tests/test_configs.py` from the root directory of the repo. Alternatively in your python environment you may run the following snippit:
+```python
+import config_stp_wcc
+config_stp_wcc.load_config_values("parsed", return_loader=True).validate_astropy()
+```
+Which will return 'True' if every unit is a valid astropy unit, or a list containing every invalid unit. If you would like to use a custom u
+nit, click [here](https://docs.astropy.org/en/stable/units/combining_and_defining.html#defining-units) for how to define that as a custom unit in Astropy.
+  
+
 ## Git large file storage (LFS)
 
 This repository makes use of the git large file storage for files listed in the `.gitattributes` file.
