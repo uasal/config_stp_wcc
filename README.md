@@ -50,9 +50,20 @@ load_config_values() has a default argument of 'raw' but alternatively accepts 3
 For importing data and keeping code consistent across installs, config_stp_wcc will return the path to support_data with `get_data_path()`
 ```python
 import config_stp_wcc
-data_path = config_stp.get_data_path()
+data_path = config_stp_wcc.get_data_path()
 print(data_path)
 ``` 
+
+## Astropy Unit Validation
+
+All .toml config values should have a valid astropy unit if any units are defined. If no unit is included, the value is assumed to be unitless. A GitHub CI will automatically run a test on push to validate astropy units in the configs, reporting any issues with non-conforming astropy units. If you'd like to perform validation locally, you may run `pytest tests/test_configs.py` from the root directory of the repo. Alternatively in your python environment you may run the following snippit:
+```python
+import config_stp_wcc
+config_stp_wcc.load_config_values("parsed", return_loader=True).validate_astropy()
+```
+Which will return 'True' if every unit is a valid astropy unit, or a list containing every invalid unit. If you would like to use a custom u
+nit, click [here](https://docs.astropy.org/en/stable/units/combining_and_defining.html#defining-units) for how to define that as a custom unit in Astropy.
+  
 
 ## Git large file storage (LFS)
 
