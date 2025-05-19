@@ -1,1 +1,1 @@
-All example notebooks go here. Added for Initial Commit.
+All example notebooks go here. Contents do not need to be removed before pushing to git.

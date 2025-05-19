@@ -4,14 +4,17 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "config_stp_wcc"
-description = "Master config loader for stp project at UASAL"
+description = "Configuration repository for the STP project by UASAL."
 readme = "README.md"
-license = { text = "GNU GENERAL PUBLIC LICENSE - Verison 3" }
+license = { text = "GNU GENERAL PUBLIC LICENSE - Version 3" }
 requires-python = ">=3.8"
 dependencies = [
     "utils_config @ git+https://github.com/uasal/utils_config.git@develop"
 ]
 dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
 
 [project.urls]
 Homepage = "https://github.com/uasal/config_stp_wcc/blob/main/README.md"
