@@ -1,0 +1,52 @@
+title = "STP WCC Default Instrument Configuration"
+
+[simulation] #---------------------------------------------------------------------
+beam_sampling = 512 # pixels; should be greater or equal to 2x fov to ensure Nyquist
+fov = 128 # pixels; should be no greater than 1/2 of beam_sampling to ensure Nyquist
+wvl_sampling = 24 # baseline sloan-R filter is 24% bandwidth; my general rule of thumb is 1 wvl per % of bandwidth      
+use_raytrace = "True"
+
+[optics] #---------------------------------------------------------------------
+
+[optics.m1]
+beam_size = '6.42m' # derived from STP_TMA_Mark_12F+M1_Bending.zos by multiplying the distance between the chief and marginal rays by 2
+
+[optics.m2]
+beam_size = '0.5784126987600984m' # derived from STP_TMA_Mark_12F+M1_Bending.zos by multiplying the distance between the chief and marginal rays by 2
+
+[optics.m3]
+beam_size = '0.08319464623257851m' # derived from STP_TMA_Mark_12F+M1_Bending.zos by multiplying the distance between the chief and marginal rays by 2
+
+[optics.m4]
+beam_size = '0.08561819m' # derived from STP_TMA_Mark_12F+M1_Bending.zos by multiplying the distance between the chief and marginal rays by 2
+
+[pr] #---------------------------------------------------------------------
+defocus_vals = [0.0, 0.5, 1.0, 0.5, 1.0] # waves of defocus for each PSF  
+
+[pr.iter1]
+type = 'joint' # joint or individual optimization of PSFs
+zonal = 'False' # zonal or modal optimization; if True then clobbers modes_min, modes_max, and modes_fd
+modes_min = 2 # min zernike coeff to be estimated
+modes_max = 50 # max zernike coeff to be estimated
+modes_fd = [2, 3, 4, 5, 6, 7, 8, 9] # zernike coeffs which exhibit field-dependence
+gain_fd = 0.75 # gain applied to estimated zernike coeffs which exhibit field-dependence
+gain_static = 1.0 # gain applied to estimated zernike coeffs which are static across the field
+error_fx = 'GIE' # style of error function; GIE = gain invarient error; MSE = mean square error
+max_ls = 20 # max number of line search steps per iteration of L-BFGS-B
+max_iter = 50 # max iterations of L-BFGS-B
+f_tol = 1e-20 # stop condition where (f^k - f^{k+1})/max{|f^k|,|f^{k+1}|,1} <= f_tol
+g_tol = 1e-8 # stop condition where max{|proj_g_i | i = 1, ..., n} <= g_tol and proj_g_i is the i-th component of the projected gradient
+
+[pr.iter2]
+type = 'individual' # joint or individual optimization of PSFs
+zonal = 'False' # zonal or modal optimization; if True then clobbers modes_min, modes_max, and modes_fd
+modes_min = 2 # min zernike coeff to be estimated
+modes_max = 50 # max zernike coeff to be estimated
+modes_fd = [2, 3, 4, 5, 6, 7, 8, 9] # zernike coeffs which exhibit field-dependence
+gain_fd = 1.0 # gain applied to estimated zernike coeffs which exhibit field-dependence
+gain_static = 0.75 # gain applied to estimated zernike coeffs which are static across the field
+error_fx = 'GIE' # style of error function; GIE = gain invarient error; MSE = mean square error
+max_ls = 20 # max number of line search steps per iteration of L-BFGS-B
+max_iter = 100 # max iterations of L-BFGS-B
+f_tol = 1e-20 # stop condition where (f^k - f^{k+1})/max{|f^k|,|f^{k+1}|,1} <= f_tol
+g_tol = 1e-8 # stop condition where max{|proj_g_i | i = 1, ..., n} <= g_tol and proj_g_i is the i-th component of the projected gradient
