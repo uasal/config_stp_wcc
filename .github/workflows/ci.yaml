@@ -1,3 +1,6 @@
+# NOTE: Change / update the BRANCH variable in the repository settings to test against specific branches
+# (Or indicate in the PR for someone to do that for you)
+
 name: CI Pipeline
 
 on:
@@ -25,7 +28,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Checkout ETC WCC
       run: | 
-        git clone --branch $BRANCH https://github.com/uasal/stp_etc_imaging.git
+        git clone --branch "${{ vars.BRANCH }}" https://github.com/uasal/stp_etc_imaging.git
 
     - name: Install Packages
       run: |
@@ -43,7 +46,7 @@ jobs:
         PASSED=$(python -c "import re; f=open('config_pytest_output.txt').read(); match=re.search(r'(\d+) passed', f); print(match.group(1) if match else '0')")
         FAILED=$(grep -oP '\d+(?= failed)' config_pytest_output.txt || echo "0")
 
-    - name: Run PyTests- ETC Package
+    - name: Run PyTests- ETC Package Custom Branch
       id: etc_pytest_results
       run: |
         cd stp_etc_imaging/tests
