@@ -25,7 +25,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Checkout ETC WCC
       run: | 
-        git clone https://github.com/uasal/stp_etc_imaging.git
+        git clone --branch $BRANCH https://github.com/uasal/stp_etc_imaging.git
 
     - name: Install Packages
       run: |
