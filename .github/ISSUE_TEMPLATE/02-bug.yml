@@ -1,0 +1,43 @@
+name: "Bug Report"
+description: "Issue for reporting a bug that needs fixing for the repository."
+title: "[bug]: "
+labels: ["bug"]
+body:
+- type: checkboxes
+  attributes: 
+    label: "Does a similar issue / bug report exist already?"
+    description: Verify a similar issue does not already exist within this repository for this bug.
+    options:
+    - label: "No"
+      required: true
+- type: textarea
+  attributes:
+    label: "Bug Behavior"
+    description: "Describe the issue / bug that you are experiencing and what it impacts."
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: "Expected Behavior"
+    description: "Detail what is expected to happen instead / intended behavior."
+  validations:
+    required: false
+- type: checkboxes
+  attributes:
+    label: "Local build or CI process?"
+    description: "Is this issue with local build or CI workflow?"
+    options:
+    - label: "CI Workflow"
+    - label: "Local Build"
+    - label: "Other"
+  validations:
+    required: false
+- type: textarea
+  attributes:
+    label: "Additional Info"
+    description: |
+      Add any links, references, and screenshots that might help as well as any additional information that this template did not cover.
+      
+      Tip: Files can be attached by clicking this area to highlight it and then drag / drop.
+  validations:
+    required: false

@@ -2,15 +2,16 @@
 
 Space Telescope Pathfinder's WCC-specific repository for support data and configuration management as an installable python package 
 
-Details on the change control process are found in the [coronograph design documentation repository](https://github.com/uasal/spacecoron_design_docs)
+Details on the Configuration Management Plan for these repos can be found in the [UASAL Development Guide](https://uasal.github.io/uasal_development_guide/python/configuration_management.html).
 
 The parameters for each subsystem are found in the `configs` directory, and supporting data is found in the `support_data` directory.
 A description of how configurations are used in UASAL software, users can find an example notebook in the `docs` directory of the  [config_project_template](https://github.com/uasal/config_project_template) repository. 
+
 ## Dependencies and Requirements
 
-config_stp_wcc is dependent on [utils_config](https://github.com/uasal/utils_config) but will automatically be installed via 
+`config_stp_wcc` is dependent on [utils_config](https://github.com/uasal/utils_config) but will automatically be installed via 
 ```sh 
-pip install "git+https://github.com/uasal/utils_config.git@develop"
+pip install git+https://github.com/uasal/config_stp_wcc.git
 ```
 
 ssh keys are necessary for the pip-based install. Verify you have ssh keys installed in GitHub, or check out this [ssh key tutorial](https://github.com/uasal/lab_documents/blob/main/ssh_key_tutorial.md)
@@ -18,14 +19,14 @@ ssh keys are necessary for the pip-based install. Verify you have ssh keys insta
 ## Pip Installation
 
 ```sh
-pip install git+ssh://git@github.com/uasal/config_stp_wcc.git
+pip install git+https://github.com/uasal/config_stp_wcc.git
 ```
 
 ## Git Clone Installation
 
 ### **1. Clone the Repository**
 ```sh
-git clone git@github.com:uasal/config_stp_wcc.git
+git clone https://github.com/uasal/config_stp_wcc.git
 cd config_stp_wcc
 ```
 
@@ -36,7 +37,7 @@ pip install .
 
 ## Usage
 
-config_stp_wcc makes usage of the ConfigLoader class (as *config_loader*) from utils_config via the `load_config_values` method, accepting 'raw' 'parsed' or 'unitless' as an argument, returning a dictionary after parsing the 'configs' directory for .toml filies
+`config_stp_wcc` makes usage of the ConfigLoader class (as *config_loader*) from utils_config via the `load_config_values` method, accepting 'raw' 'parsed' or 'unitless' as an argument, returning a dictionary after parsing the 'configs' directory for .toml files
 ```python
 import config_stp_wcc
 data = config_stp_wcc.load_config_values()
@@ -56,7 +57,7 @@ print(data_path)
 
 ## Astropy Unit Validation
 
-All .toml config values should have a valid astropy unit if any units are defined. If no unit is included, the value is assumed to be unitless. A GitHub CI will automatically run a test on push to validate astropy units in the configs, reporting any issues with non-conforming astropy units. If you'd like to perform validation locally, you may run `pytest tests/test_configs.py` from the root directory of the repo. Alternatively in your python environment you may run the following snippit:
+All .toml config values should have a valid astropy unit if any units are defined. If no unit is included, the value is assumed to be unitless. A GitHub CI will automatically run a test on push to validate astropy units in the configs, reporting any issues with non-conforming astropy units. If you'd like to perform validation locally, you may run `pytest tests/test_configs.py` from the root directory of the repo. Alternatively in your python environment you may run the following snippet:
 ```python
 import config_stp_wcc
 config_stp_wcc.load_config_values("parsed", return_loader=True).validate_astropy()
