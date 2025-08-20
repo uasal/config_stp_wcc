@@ -1,12 +1,12 @@
 # NOTE: Change / update the BRANCH variable in the repository settings to test against specific branches
 # (Or indicate in the PR for someone to do that for you)
 
-name: CI Pipeline
+name: Package Install & PyTest Checks
 
 on:
-  push:
-    branches:
-      - '**'
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+
 jobs:
   check-tomls-python3-12:
     runs-on: ubuntu-latest
@@ -24,12 +24,15 @@ jobs:
       run: |
         python -m pip install --upgrade pip
 
+      # Checkout / clone stp_etc_imaging (custom branch) 
     - name: Checkout ETC Package
       uses: actions/checkout@v4
     - name: Checkout ETC WCC
       run: | 
         git clone --branch "${{ vars.BRANCH }}" https://github.com/uasal/stp_etc_imaging.git
 
+      # Install the custom branch stp_etc_imaging package  
+      # Re-installs the config repo to be the one checkout
     - name: Install Packages
       run: |
         cd stp_etc_imaging
@@ -37,6 +40,7 @@ jobs:
         cd ..
         pip install .[dev]
 
+      # Pytest Run for the configuration package
     - name: Run PyTests- Config Package
       id: config_pytest_results
       run: |
@@ -45,8 +49,9 @@ jobs:
 
         PASSED=$(python -c "import re; f=open('config_pytest_output.txt').read(); match=re.search(r'(\d+) passed', f); print(match.group(1) if match else '0')")
         FAILED=$(grep -oP '\d+(?= failed)' config_pytest_output.txt || echo "0")
-
-    - name: Run PyTests- ETC Package Custom Branch
+      
+    # Pytest from stp_etc_imaging Package (custom branch)
+    - name: Run PyTests- stp_etc_imaging branch
       id: etc_pytest_results
       run: |
         cd stp_etc_imaging/tests
